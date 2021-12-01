@@ -6,6 +6,16 @@
  * @returns {React.ReactElement}¡
  */
 
+import { Carousel } from "../components/carousel/Carousel";
+
 export const CarouselVotes = () => {
-  return <div>Carousel Votes</div>;
+  return (
+    <>
+      <Carousel>
+        {[].map((item, index) => {
+          return <div key={index}>{item}</div>;
+        })}
+      </Carousel>
+    </>
+  );
 };
