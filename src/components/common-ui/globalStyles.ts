@@ -10,5 +10,13 @@ export const GlobalStyles = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     font-size: 12px;
   }
-
+  .flex {
+    display: flex;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .items-center {
+    align-items: center;
+  }
 `;

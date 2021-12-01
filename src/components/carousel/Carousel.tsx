@@ -5,15 +5,25 @@
  * @returns
  */
 
+import { Dropdown } from "../common-ui/dropdown/Dropdown";
+import {
+  CarouselContainer,
+  CarouselTitleHeader,
+  MainContainer,
+} from "./Carousel.styles";
+
 interface ICarouselProps {
   children: React.ReactNode;
 }
 
 export const Carousel = ({ children }: ICarouselProps) => {
   return (
-    <div>
-      Carousel
-      {children}
-    </div>
+    <MainContainer>
+      <div className="flex justify-between items-center">
+        <CarouselTitleHeader>Previous Rulings</CarouselTitleHeader>
+        <Dropdown />
+      </div>
+      <CarouselContainer>{children}</CarouselContainer>
+    </MainContainer>
   );
 };

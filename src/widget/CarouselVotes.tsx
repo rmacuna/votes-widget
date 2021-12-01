@@ -12,9 +12,21 @@ export const CarouselVotes = () => {
   return (
     <>
       <Carousel>
-        {[].map((item, index) => {
-          return <div key={index}>{item}</div>;
-        })}
+        {/* Map an render 15 blue squares */}
+        {[...Array(15)].map((_, index) => (
+          <div
+            key={index}
+            className="carousel-item"
+            style={{
+              backgroundColor: "blue",
+              height: "100px",
+              marginRight: 10,
+              minWidth: "100px",
+            }}
+          >
+            {index}
+          </div>
+        ))}
       </Carousel>
     </>
   );
