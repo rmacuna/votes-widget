@@ -37,6 +37,18 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
       }
     }}
   }
+  // Create a grid of three columns in desktop
+  @media (min-width: 1201px) {
+    ${({ viewType }) => {
+      if (viewType === "grid") {
+        return `
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 1.5rem;
+          `;
+      }
+    }}
+  }
 `;
 
 export const CarouselTitleHeader = styled.h2`
