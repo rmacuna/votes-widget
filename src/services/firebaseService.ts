@@ -61,6 +61,7 @@ export class FirebaseService {
   async upVoteCelebrity(celebrityId: string) {
     const celebrity = doc(this.db, `celebrities/${celebrityId}`);
     updateDoc(celebrity, {
+      lastUpdated: new Date().toISOString(),
       positiveVotes: increment(1),
     });
   }
@@ -68,7 +69,8 @@ export class FirebaseService {
   async downVoteCelebrity(celebrityId: string) {
     const celebrity = doc(this.db, `celebrities/${celebrityId}`);
     updateDoc(celebrity, {
-      negativeVotes: increment(-1),
+      lastUpdated: new Date().toISOString(),
+      negativeVotes: increment(1),
     });
   }
 }

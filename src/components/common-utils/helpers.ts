@@ -32,7 +32,8 @@ export const getLastModifiedString = (date: string) => {
   if (interval > 1) {
     return interval + " minutes ago";
   }
-  return Math.floor(seconds) + " seconds ago";
+  interval = Math.floor(seconds);
+  return interval > 0 ? `${interval} seconds ago` : "a moment ago";
 };
 
 export const calculatePercentageOfVotes = (

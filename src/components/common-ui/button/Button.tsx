@@ -5,7 +5,7 @@ export const Button = styled.button`
   cursor: pointer;
   width: 100%;
   padding: 10px 4.6px;
-  color: #fff;
+  color: ${(props) => (props.disabled ? "#8e8e8e" : "#fff")};
   border: 1px solid #ffffff;
   background: rgba(0, 0, 0, 0.6);
   font-size: 1.25rem;

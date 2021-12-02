@@ -18,6 +18,7 @@ import {
   calculatePercentageOfVotes,
   getLastModifiedString,
 } from "../common-utils/helpers";
+import { useVote } from "./useVote";
 
 interface CarouselCardProps {
   celebrity: ICelebrity;
@@ -26,6 +27,7 @@ interface CarouselCardProps {
 
 export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
   const {
+    id,
     category,
     name,
     lastUpdated,
@@ -34,21 +36,11 @@ export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
     positiveVotes,
     description,
   } = celebrity;
-
-  const [selectedButton, setSelectedButton] = React.useState("");
+  const { downVote, handleOnVote, selectedVote, isVoted, upVote, loading } =
+    useVote(id);
   const averageVotes = positiveVotes > negativeVotes ? "up" : "down";
   const { total, thumbsDownPercentage, thumbsUpPercentage } =
     calculatePercentageOfVotes(positiveVotes, negativeVotes);
-
-  const handleSelectButton = (selectedValue: string) => {
-    if (selectedValue === selectedButton) {
-      setSelectedButton("");
-      return;
-    }
-    setSelectedButton(selectedValue);
-  };
-
-  const handleVote = () => {};
 
   return (
     <CarouselCardContainer>
@@ -57,30 +49,40 @@ export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
       <CardImage src={picture} />
       <CardContent>
         <CardTitle>{ellipsisName(name)}</CardTitle>
-        <CardDescription>{description}</CardDescription>
+        <CardDescription>
+          {isVoted ? `Thank you for voting!` : description}
+        </CardDescription>
         <UpdateTimestamp>
           {getLastModifiedString(lastUpdated)} in {category}
         </UpdateTimestamp>
         <ActionVotesContainer>
-          <ThumbButton
-            onClick={() => handleSelectButton("up")}
-            isActive={selectedButton === "up"}
-            viewType={viewType}
-            buttonType="up"
-          />
-          <ThumbButton
-            onClick={() => handleSelectButton("down")}
-            isActive={selectedButton === "down"}
-            viewType={viewType}
-            buttonType="down"
-          />
-          <Button onClick={handleVote}>Vote now</Button>
+          {!isVoted && (
+            <>
+              <ThumbButton
+                onClick={upVote}
+                isActive={selectedVote === "up"}
+                viewType={viewType}
+                buttonType="up"
+              />
+              <ThumbButton
+                onClick={downVote}
+                isActive={selectedVote === "down"}
+                viewType={viewType}
+                buttonType="down"
+              />
+            </>
+          )}
+
+          <Button disabled={!selectedVote && !isVoted} onClick={handleOnVote}>
+            {loading && "Voting..."}
+            {isVoted && !loading && "Vote again!"}
+            {!isVoted && !loading && "Vote now!"}
+          </Button>
         </ActionVotesContainer>
       </CardContent>
       <GaugeBar
         positiveVotes={thumbsUpPercentage}
         negativeVotes={thumbsDownPercentage}
-        total={total}
       />
     </CarouselCardContainer>
   );
