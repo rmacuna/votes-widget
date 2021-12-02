@@ -2,6 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { FirebaseService } from "./services/firebaseService";
+
+export const firebaseService = new FirebaseService();
 
 ReactDOM.render(
   <React.StrictMode>

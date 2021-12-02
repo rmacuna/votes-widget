@@ -6,6 +6,7 @@ export class Celebrity {
   name: string;
   category: ICategoryLabel;
   picture: string;
+  description: string;
   lastUpdated = Date.now();
   positiveVotes = 0;
   negativeVotes = 0;
@@ -14,5 +15,6 @@ export class Celebrity {
     this.name = args.name;
     this.category = args.category;
     this.picture = args.picture;
+    this.description = args.description;
   }
 }

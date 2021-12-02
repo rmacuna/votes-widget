@@ -8,6 +8,7 @@ export interface ISelectOption {
 export interface ICelebrityInput {
   name: string;
   category: ICategoryLabel;
+  description: string;
   picture: string;
 }
 export interface ICelebrity extends ICelebrityInput {

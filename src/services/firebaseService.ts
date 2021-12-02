@@ -1,5 +1,4 @@
 // Create a firebase service that uses the firebase SDK
-import firebase from "firebase/app";
 import {
   getFirestore,
   collection,
@@ -11,7 +10,9 @@ import {
   setDoc,
   doc,
   Firestore,
-} from "firebase/firestore/lite";
+} from "@firebase/firestore";
+import { initializeApp } from "firebase/app";
+
 import { Celebrity } from "../models/Celebrity";
 import { ICelebrityInput } from "../types";
 import { firebaseConfig } from "./firebaseConfig";
@@ -31,9 +32,12 @@ const celebrityConverter: FirestoreDataConverter<Celebrity> = {
 
 export class FirebaseService {
   db: Firestore;
+  celebritiesColl;
+
   constructor() {
-    const app = firebase.initializeApp(firebaseConfig);
+    const app = initializeApp(firebaseConfig);
     this.db = getFirestore(app);
+    this.celebritiesColl = collection(this.db, "celebrities");
   }
 
   async addCelebrity(input: ICelebrityInput) {
@@ -47,6 +51,10 @@ export class FirebaseService {
     const celebCollection = collection(this.db, "celebrities");
     const celebSnapshot = await getDocs(celebCollection);
     const celebrityList = celebSnapshot.docs.map((doc) => doc.data());
+    console.log(
+      "🚀 ~ file: firebaseService.ts ~ line 50 ~ FirebaseService ~ getCelebrities ~ celebrityList",
+      celebrityList
+    );
     return celebrityList;
   }
 

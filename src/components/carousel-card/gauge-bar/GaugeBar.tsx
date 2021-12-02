@@ -7,22 +7,28 @@ import {
 import ThumbUp from "../../../assets/svg/thumbup.svg";
 import ThumbDown from "../../../assets/svg/thumbdown.svg";
 
-export const GaugeBar = () => {
-  const total = 10;
-  const thumbsUp = (2 * 100) / total; // FIXME: Add real data
-  const thumbsDown = (8 * 100) / total;
+interface GaugeBarProps {
+  total: number;
+  positiveVotes: number;
+  negativeVotes: number;
+}
 
+export const GaugeBar = ({
+  positiveVotes,
+  negativeVotes,
+  total,
+}: GaugeBarProps) => {
   return (
     <GaugeBarContainer>
-      <PositivePercentage percentage={thumbsUp}>
+      <PositivePercentage percentage={positiveVotes}>
         <ScoreContainer>
           <img src={ThumbUp} alt="ThumbUp" />
-          <span>{thumbsUp}%</span>
+          <span>{positiveVotes}%</span>
         </ScoreContainer>
       </PositivePercentage>
-      <NegativePercentage percentage={thumbsDown}>
+      <NegativePercentage percentage={negativeVotes}>
         <ScoreContainer>
-          <span>{thumbsDown}%</span>
+          <span>{negativeVotes}%</span>
           <img src={ThumbDown} alt="ThumbDown" />
         </ScoreContainer>
       </NegativePercentage>
