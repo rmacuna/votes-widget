@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { PHONE_MAX } from "../../common-utils/constants";
 
 interface DropdownMenuProps {
   readonly isOpen: boolean;
@@ -18,7 +19,7 @@ export const DropdownContainer = styled.div`
   flex-wrap: wrap;
   border: 2px solid #333333;
   // Hide in mobile devices
-  @media (max-width: 768px) {
+  @media (max-width: ${PHONE_MAX}) {
     display: none;
   }
 `;

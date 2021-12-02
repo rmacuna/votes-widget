@@ -12,3 +12,8 @@ export const VIEWMODE_OPTIONS = [
     value: "grid",
   },
 ] as ISelectOption[];
+
+export const PHONE_MAX = "767px";
+export const TABLET_MIN = "768px";
+export const DESKTOP_MIN = "1024px";
+export const XL_MIN = "1200px";

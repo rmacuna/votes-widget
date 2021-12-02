@@ -1,4 +1,9 @@
 import styled from "styled-components";
+import {
+  DESKTOP_MIN,
+  PHONE_MAX,
+  TABLET_MIN,
+} from "../../components/common-utils/constants";
 
 interface ICarouselContainer {
   readonly viewType: string;
@@ -11,7 +16,7 @@ export const MainContainer = styled.div`
 
 export const CarouselContainer = styled.div<ICarouselContainer>`
   // Horizontal scroll in phones
-  @media (max-width: 768px) {
+  @media (max-width: ${PHONE_MAX}) {
     display: grid;
     break-inside: avoid-column;
     grid-auto-columns: 300px;
@@ -22,7 +27,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
     overflow-y: hidden;
     scroll-behavior: smooth;
   }
-  @media (min-width: 769px) {
+  @media (min-width: ${TABLET_MIN}) {
     ${({ viewType }) => {
       if (viewType === "grid") {
         return `
@@ -43,7 +48,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
     }}
   }
   // Create a grid of three columns in desktop
-  @media (min-width: 1201px) {
+  @media (min-width: ${DESKTOP_MIN}) {
     ${({ viewType }) => {
       if (viewType === "grid") {
         return `

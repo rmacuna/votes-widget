@@ -1,3 +1,5 @@
+import { ThumbButtonStyled } from "./ThumbButton.styles";
+
 export const ThumbButton = () => {
-  return <button>Thumb Button</button>;
+  return <ThumbButtonStyled buttonType="up" />;
 };
