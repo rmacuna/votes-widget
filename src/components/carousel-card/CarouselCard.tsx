@@ -11,11 +11,17 @@ import { GaugeBar } from "./gauge-bar/GaugeBar";
 import kanye from "../../assets/img/kanye.jpeg";
 import { ellipsisName } from "./helpers";
 import { ThumbButton } from "../thumb-button/ThumbButton";
+import { ICelebrity } from "../../types";
 
-export const CarouselCard = () => {
+interface CarouselCardProps {
+  celebrity?: ICelebrity;
+  viewType: string;
+}
+
+export const CarouselCard = ({ viewType }: CarouselCardProps) => {
   return (
     <CarouselCardContainer>
-      <ThumbButton position="absolute" buttonType="up" />
+      <ThumbButton viewType={viewType} position="absolute" buttonType="up" />
       <CardBackdrop />
       <CardImage src={kanye} />
       <CardContent>

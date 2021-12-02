@@ -6,16 +6,23 @@
  * @returns {React.ReactElement}¡
  */
 
+import * as React from "react";
 import { CarouselCard } from "../components/carousel-card/CarouselCard";
 import { Carousel } from "../components/carousel/Carousel";
 
 export const CarouselVotes = () => {
+  const [viewType, setViewType] = React.useState("list");
+
+  const handleChangeViewType = (viewType: string) => {
+    setViewType(viewType);
+  };
+
   return (
     <>
-      <Carousel>
+      <Carousel viewType={viewType} onChangeViewType={handleChangeViewType}>
         {/* Map an render 15 blue squares */}
         {[...Array(5)].map((_, index) => (
-          <CarouselCard key={index} />
+          <CarouselCard viewType={viewType} key={index} />
         ))}
       </Carousel>
     </>

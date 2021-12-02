@@ -4,6 +4,8 @@ import { PHONE_MAX, TABLET_MIN } from "../common-utils/constants";
 export interface IThumbButton {
   readonly buttonType: "up" | "down";
   readonly position: "absolute" | "relative";
+  readonly viewType: string;
+  readonly isActive?: boolean;
 }
 
 export const ThumbButtonContainer = styled.button<IThumbButton>`
@@ -23,20 +25,25 @@ export const ThumbButtonContainer = styled.button<IThumbButton>`
     if (props.position === "absolute") {
       return `
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         @media (max-width: ${PHONE_MAX}){
           top: 50%;
-          transform: translateY(-110%);
+          transform: translateY(-50%);
           left: 0;
           width: 28px;
           height: 28px;
         }
         @media (min-width: ${TABLET_MIN}) {
-          top: 0;
+          top: ${props.viewType === "list" ? "0" : "50%"};
           left: 0;
-          width: 28px;
-          height: 28px;
+          width: 30px;
+          height: 30px;
           margin: 0;
+          ${
+            props.viewType === "grid"
+              ? "transform: translateY(-30px);"
+              : undefined
+          }
         }
       `;
     }

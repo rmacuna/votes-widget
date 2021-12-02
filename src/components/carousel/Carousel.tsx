@@ -14,14 +14,18 @@ import {
 } from "./Carousel.styles";
 
 interface ICarouselProps {
+  viewType: string;
+  onChangeViewType: (viewType: string) => void;
   children: React.ReactNode;
 }
 
-export const Carousel = ({ children }: ICarouselProps) => {
-  const [viewType, setViewType] = React.useState("list");
-
+export const Carousel = ({
+  children,
+  viewType,
+  onChangeViewType,
+}: ICarouselProps) => {
   const handleSelectViewType = (viewType: string) => {
-    setViewType(viewType);
+    onChangeViewType(viewType);
   };
 
   return (
