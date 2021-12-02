@@ -1,10 +1,11 @@
 import { ThumbButtonContainer } from "./ThumbButton.styles";
 import ThumbUp from "../../assets/svg/thumbup.svg";
+import ThumbDown from "../../assets/svg/thumbdown.svg";
 
 interface ThumbButtonProps {
   onClick?: () => void;
   isActive?: boolean;
-  position: "absolute" | "relative";
+  absolute?: boolean;
   buttonType: "up" | "down";
   viewType: string;
 }
@@ -13,7 +14,7 @@ export const ThumbButton = ({
   onClick,
   isActive,
   viewType,
-  position,
+  absolute,
   buttonType,
 }: ThumbButtonProps) => {
   return (
@@ -22,9 +23,13 @@ export const ThumbButton = ({
       viewType={viewType}
       buttonType={buttonType}
       onClick={onClick}
-      position={position}
+      absolute={absolute}
     >
-      <img src={ThumbUp} alt="Thumbs up" />
+      {buttonType === "up" ? (
+        <img src={ThumbUp} alt="Thumbs up" />
+      ) : (
+        <img src={ThumbDown} alt="Thumbs down" />
+      )}
     </ThumbButtonContainer>
   );
 };

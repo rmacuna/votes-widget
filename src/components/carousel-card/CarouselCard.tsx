@@ -1,3 +1,4 @@
+import * as React from "react";
 import {
   CardBackdrop,
   CardContent,
@@ -12,6 +13,8 @@ import kanye from "../../assets/img/kanye.jpeg";
 import { ellipsisName } from "./helpers";
 import { ThumbButton } from "../thumb-button/ThumbButton";
 import { ICelebrity } from "../../types";
+import { ActionVotesContainer } from "../thumb-button/ThumbButton.styles";
+import { Button } from "../common-ui/button/Button";
 
 interface CarouselCardProps {
   celebrity?: ICelebrity;
@@ -19,9 +22,21 @@ interface CarouselCardProps {
 }
 
 export const CarouselCard = ({ viewType }: CarouselCardProps) => {
+  const [selectedButton, setSelectedButton] = React.useState("");
+
+  const handleSelectButton = (selectedValue: string) => {
+    if (selectedValue === selectedButton) {
+      setSelectedButton("");
+      return;
+    }
+    setSelectedButton(selectedValue);
+  };
+
+  const handleVote = () => {};
+
   return (
     <CarouselCardContainer>
-      <ThumbButton viewType={viewType} position="absolute" buttonType="up" />
+      <ThumbButton viewType={viewType} absolute buttonType="up" />
       <CardBackdrop />
       <CardImage src={kanye} />
       <CardContent>
@@ -30,8 +45,23 @@ export const CarouselCard = ({ viewType }: CarouselCardProps) => {
           Vesitbulum diam ante , porttitor a odio eget congue a felis faucibus
           eget congue a felis faucibus
         </CardDescription>
+        <UpdateTimestamp>1 month ago in Entretainment</UpdateTimestamp>
+        <ActionVotesContainer>
+          <ThumbButton
+            onClick={() => handleSelectButton("up")}
+            isActive={selectedButton === "up"}
+            viewType={viewType}
+            buttonType="up"
+          />
+          <ThumbButton
+            onClick={() => handleSelectButton("down")}
+            isActive={selectedButton === "down"}
+            viewType={viewType}
+            buttonType="down"
+          />
+          <Button onClick={handleVote}>Vote now</Button>
+        </ActionVotesContainer>
       </CardContent>
-      <UpdateTimestamp>1 month ago in Entretainment</UpdateTimestamp>
       <GaugeBar />
     </CarouselCardContainer>
   );
