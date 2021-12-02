@@ -6,6 +6,7 @@
  * @returns {React.ReactElement}¡
  */
 
+import { CarouselCard } from "../components/carousel-card/CarouselCard";
 import { Carousel } from "../components/carousel/Carousel";
 
 export const CarouselVotes = () => {
@@ -13,19 +14,8 @@ export const CarouselVotes = () => {
     <>
       <Carousel>
         {/* Map an render 15 blue squares */}
-        {[...Array(15)].map((_, index) => (
-          <div
-            key={index}
-            className="carousel-item"
-            style={{
-              backgroundColor: "blue",
-              height: "100px",
-              marginRight: 10,
-              minWidth: "100px",
-            }}
-          >
-            {index}
-          </div>
+        {[...Array(5)].map((_, index) => (
+          <CarouselCard key={index} />
         ))}
       </Carousel>
     </>

@@ -12,11 +12,14 @@ export const MainContainer = styled.div`
 export const CarouselContainer = styled.div<ICarouselContainer>`
   // Horizontal scroll in phones
   @media (max-width: 768px) {
-    display: flex;
-    flex: 1;
+    display: grid;
+    break-inside: avoid-column;
+    grid-auto-columns: 300px;
+    grid-auto-rows: 300px;
+    grid-auto-flow: column;
+    grid-column-gap: 1rem;
     overflow-x: scroll;
     overflow-y: hidden;
-    white-space: nowrap;
     scroll-behavior: smooth;
   }
   @media (min-width: 769px) {
@@ -25,6 +28,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
         return `
           display: grid;
           grid-template-columns: repeat(2, 1fr);
+          grid-auto-rows: 351px;
           grid-gap: 1rem;
       `;
       }
@@ -32,6 +36,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
         return `
           display: grid;
           grid-template-columns: repeat(1, 1fr);
+          grid-auto-rows: 142px;
           grid-gap: 1.167rem;
         `;
       }
@@ -44,8 +49,17 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
         return `
           display: grid;
           grid-template-columns: repeat(3, 1fr);
+          grid-gap: 2.25rem;
+          grid-auto-rows: 348px;
+        `;
+      }
+      if (viewType === "list") {
+        return `
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
           grid-gap: 1.5rem;
-          `;
+          grid-auto-rows: 170px;
+        `;
       }
     }}
   }

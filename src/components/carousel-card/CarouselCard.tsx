@@ -1,3 +1,5 @@
+import { CarouselCardContainer } from "./CarouselCard.styles";
+
 export const CarouselCard = () => {
-  return <div>Carousel Card</div>;
+  return <CarouselCardContainer>d</CarouselCardContainer>;
 };
