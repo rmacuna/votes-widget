@@ -34,7 +34,7 @@ export const Carousel = ({ children }: ICarouselProps) => {
           options={VIEWMODE_OPTIONS}
         />
       </div>
-      <CarouselContainer>{children}</CarouselContainer>
+      <CarouselContainer viewType={viewType}>{children}</CarouselContainer>
     </MainContainer>
   );
 };
