@@ -17,3 +17,7 @@ export interface ICelebrity extends ICelebrityInput {
   positiveVotes: number;
   negativeVotes: number;
 }
+
+export interface WithViewType {
+  viewType: string;
+}

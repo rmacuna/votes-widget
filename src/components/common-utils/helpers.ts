@@ -48,5 +48,5 @@ export const calculatePercentageOfVotes = (
   const thumbsUpPercentage = Math.round(thumbsUp * 10) / 10;
   const thumbsDownPercentage = Math.round(thumbsDown * 10) / 10;
 
-  return { total, thumbsUpPercentage, thumbsDownPercentage };
+  return { thumbsUpPercentage, thumbsDownPercentage };
 };

@@ -1,9 +1,14 @@
 import styled from "styled-components";
+import { PHONE_MAX } from "../../common-utils/constants";
 
-export const Button = styled.button`
+interface ICustomButtonProps {
+  width?: string;
+}
+
+export const Button = styled.button<ICustomButtonProps>`
   outline: none;
   cursor: pointer;
-  width: 100%;
+  width: ${(props) => props?.width || "100%"};
   padding: 10px 4.6px;
   color: ${(props) => (props.disabled ? "#8e8e8e" : "#fff")};
   border: 1px solid #ffffff;
@@ -14,5 +19,9 @@ export const Button = styled.button`
     background: rgba(0, 0, 0, 0.8);
     // scale up a little
     transform: scale(1.02);
+  }
+
+  @media (max-width: ${PHONE_MAX}) {
+    width: 100%;
   }
 `;

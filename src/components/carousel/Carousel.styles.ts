@@ -10,8 +10,9 @@ interface ICarouselContainer {
 }
 
 export const MainContainer = styled.div`
-  padding: 0 1rem;
-  margin-top: 2rem;
+  max-width: 1044px;
+  margin: 0 auto;
+  display: block;
 `;
 
 export const CarouselContainer = styled.div<ICarouselContainer>`
@@ -32,7 +33,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
       if (viewType === "grid") {
         return `
           display: grid;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(2, 351px);
           grid-auto-rows: 351px;
           grid-gap: 1rem;
       `;
@@ -53,7 +54,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
       if (viewType === "grid") {
         return `
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, 348px);
           grid-gap: 2.25rem;
           grid-auto-rows: 348px;
         `;
