@@ -4,7 +4,7 @@ This is how the project is created.
 
 I used react to create a component that match the conditions given in the exercise.
 
-If you want to run the component itself and test it you just need to run the following commands inside the `src` folder.
+If you want to run the component itself and test it you just need to run the following commands
 
 ```
  yarn install
