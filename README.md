@@ -23,3 +23,6 @@ Thank you very much.
 - Adding unit testing could be an awesome improvement in the development of this application.
 
 - There are some logic in the code like the click outside function that can be moved into a hook for possible reusage.
+
+
+If you want to see the component running see: https://zemoga-ui-votes.web.app/ 
