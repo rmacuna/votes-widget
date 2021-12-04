@@ -45,9 +45,9 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
       if (viewType === "grid") {
         return `
           display: grid;
-          grid-template-columns: repeat(2, 351px);
+          grid-template-columns: repeat(2, 1fr);
           grid-auto-rows: 351px;
-          grid-gap: 1rem;
+          grid-gap: 1.75rem;
       `;
       }
       if (viewType === "list") {
