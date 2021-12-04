@@ -14,8 +14,9 @@ const DropdownPadding = css`
 
 export const DropdownContainer = styled.div`
   position: relative;
-  cursor: default;
+  cursor: pointer;
   width: 131px;
+  height: 100%;
   flex-wrap: wrap;
   border: 2px solid #333333;
   // Hide in mobile devices
@@ -31,8 +32,9 @@ export const DropdownControl = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
   ${DropdownPadding};
+
+  display: flex;
   justify-content: center;
   align-items: center;
 `;

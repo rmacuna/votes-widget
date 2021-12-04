@@ -37,9 +37,9 @@ export const Dropdown = ({
   };
 
   return (
-    <DropdownContainer>
-      <DropdownControl onClick={toggle}>
-        <DropdownValue ref={ref}>{value}</DropdownValue>
+    <DropdownContainer ref={ref} onClick={() => setIsOpen(!open)}>
+      <DropdownControl>
+        <DropdownValue>{value}</DropdownValue>
         <DropdownArrow isOpen={open} />
       </DropdownControl>
       <DropdownMenu isOpen={open}>

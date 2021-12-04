@@ -57,8 +57,8 @@ export const CardTitle = styled.h1<WithViewType>`
   @media (min-width: ${TABLET_MIN}) {
     ${(props) =>
       props.viewType === "list"
-        ? "padding-left: 0px"
-        : "padding-left: 36.66px"};
+        ? "padding-left: 0px; padding-bottom: 18px;"
+        : "padding-left: 43.99px"};
   }
 `;
 
@@ -75,7 +75,8 @@ export const CardDescription = styled.p<WithViewType>`
   ${TwoLinesText};
   text-overflow: ellipsis;
   color: hsla(0, 0%, 100%, 1);
-  padding-left: 36.99px;
+  padding-left: ${(props) =>
+    props.viewType === "list" ? "36.99px" : "43.99px"};
   @media (min-width: ${TABLET_MIN}) {
     ${(props) => props.viewType === "list" && "padding-left: 0px"};
   }
@@ -109,7 +110,7 @@ export const CarouselCardContainer = styled.section<WithViewType>`
 export const CardContentFlexArea = styled.div<WithViewType>`
   display: flex;
   align-items: center;
-  padding-top: 7px;
+  padding-top: ${(props) => (props.viewType === "list" ? "0px" : "7px")};
   flex-direction: column;
   ${(props) =>
     props.viewType === "list" &&

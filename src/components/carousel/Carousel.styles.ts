@@ -64,7 +64,7 @@ export const CarouselContainer = styled.div<ICarouselContainer>`
       if (viewType === "grid") {
         return `
           display: grid;
-          grid-template-columns: repeat(3, 348px);
+          grid-template-columns: repeat(3, 1fr);
           grid-gap: 2.25rem;
           grid-auto-rows: 348px;
         `;
