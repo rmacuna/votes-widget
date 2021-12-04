@@ -61,9 +61,7 @@ export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
 
       <CardContent>
         <CardContentFlexArea viewType={viewType}>
-          <CardDescription viewType={viewType}>
-            {isVoted ? `Thank you for voting!` : description}
-          </CardDescription>
+          <CardDescription viewType={viewType}>{description}</CardDescription>
           <ActionVotesContainer viewType={viewType}>
             {!isVoted && (
               <>
@@ -97,8 +95,11 @@ export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
             </Button>
           </ActionVotesContainer>
         </CardContentFlexArea>
+
         <UpdateTimestamp viewType={viewType}>
-          {getLastModifiedString(lastUpdated)} in {category}
+          {isVoted
+            ? `Thank you for your vote!`
+            : `${getLastModifiedString(lastUpdated)} in ${category}`}
         </UpdateTimestamp>
       </CardContent>
       <GaugeBar
