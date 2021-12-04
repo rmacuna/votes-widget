@@ -15,11 +15,9 @@ export const MainContainer = styled.div`
   // Create responsive container max-width
   @media (min-width: ${DESKTOP_MIN}) {
     max-width: 1100px;
-    margin: 0 auto;
   }
   @media (min-width: ${TABLET_MIN}) and (max-width: ${DESKTOP_MIN}) {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    max-width: 715px;
   }
   @media (max-width: ${PHONE_MAX}) {
     max-width: 100%;
