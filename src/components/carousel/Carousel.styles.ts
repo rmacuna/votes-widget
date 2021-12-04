@@ -10,9 +10,19 @@ interface ICarouselContainer {
 }
 
 export const MainContainer = styled.div`
-  max-width: 1044px;
   margin: 0 auto;
   display: block;
+  // Create responsive container max-width
+  @media (min-width: ${DESKTOP_MIN}) {
+    max-width: 1100px;
+  }
+  @media (min-width: ${TABLET_MIN}) and (max-width: ${DESKTOP_MIN}) {
+    max-width: 715px;
+  }
+  @media (max-width: ${PHONE_MAX}) {
+    max-width: 100%;
+    margin-left: 12px;
+  }
 `;
 
 export const CarouselContainer = styled.div<ICarouselContainer>`

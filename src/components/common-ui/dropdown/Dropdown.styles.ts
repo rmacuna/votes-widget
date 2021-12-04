@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { PHONE_MAX } from "../../common-utils/constants";
+import { DESKTOP_MIN, PHONE_MAX } from "../../common-utils/constants";
 
 interface DropdownMenuProps {
   readonly isOpen: boolean;
@@ -21,6 +21,9 @@ export const DropdownContainer = styled.div`
   // Hide in mobile devices
   @media (max-width: ${PHONE_MAX}) {
     display: none;
+  }
+  @media (min-width: ${DESKTOP_MIN}) {
+    width: 171px;
   }
 `;
 

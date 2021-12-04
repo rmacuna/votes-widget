@@ -30,10 +30,6 @@ export const Dropdown = ({
     return () => document.removeEventListener("click", handleClickOutside);
   }, []);
 
-  /**
-   * If click is outside of the dropdown, close it.
-   * @param event MouseEvent
-   */
   const handleClickOutside = (event: MouseEvent) => {
     if (ref.current && !ref.current.contains(event.target as Node)) {
       setIsOpen(false);

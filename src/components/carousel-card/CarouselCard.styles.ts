@@ -1,6 +1,11 @@
 import styled, { css } from "styled-components";
 import { WithViewType } from "../../types";
+import { ThumbButton } from "../common-ui/ThumbButton";
 import { DESKTOP_MIN, PHONE_MAX, TABLET_MIN } from "../common-utils/constants";
+
+interface IActionVotesContainer {
+  readonly viewType: string;
+}
 
 const TwoLinesText = css`
   display: -webkit-box;
@@ -9,13 +14,79 @@ const TwoLinesText = css`
   overflow: hidden;
 `;
 
+export const CardHeader = styled.div<WithViewType>`
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  ${ThumbButton} {
+    margin-bottom: 7px;
+    margin-right: 12px;
+  }
+  @media (min-width: ${TABLET_MIN}) {
+    ${ThumbButton} {
+      position: absolute;
+      z-index: 2;
+      left: 0;
+      padding: 7px;
+      min-width: 30px;
+      min-height: 30px;
+      ${(props) =>
+        props.viewType === "list" &&
+        css`
+          position: absolute;
+          left: 0;
+          top: 0;
+        `};
+    }
+  }
+  @media (min-width: ${DESKTOP_MIN}) {
+    ${ThumbButton} {
+      padding: 10.5px;
+    }
+  }
+`;
+
+export const CardTitle = styled.h1<WithViewType>`
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 36px;
+  z-index: 1;
+  ${TwoLinesText};
+  margin: 0;
+  @media (min-width: ${TABLET_MIN}) {
+    ${(props) =>
+      props.viewType === "list"
+        ? "padding-left: 0px"
+        : "padding-left: 36.66px"};
+  }
+`;
+
+export const CardContent = styled.div`
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const CardDescription = styled.p<WithViewType>`
+  font-size: 1.25rem;
+  margin: 0;
+  ${TwoLinesText};
+  text-overflow: ellipsis;
+  color: hsla(0, 0%, 100%, 1);
+  padding-left: 36.99px;
+  @media (min-width: ${TABLET_MIN}) {
+    ${(props) => props.viewType === "list" && "padding-left: 0px"};
+  }
+`;
+
 export const CarouselCardContainer = styled.section<WithViewType>`
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  padding-left: 34px;
   padding-right: 34px;
   justify-content: center;
 
@@ -35,36 +106,10 @@ export const CarouselCardContainer = styled.section<WithViewType>`
       }
     `}
 `;
-
-export const CardTitle = styled.h1`
-  font-size: 2.5rem;
-  font-weight: 400;
-  color: #fff;
-  line-height: 36px;
-  z-index: 1;
-  ${TwoLinesText};
-  margin: 0;
-  padding-bottom: 18px;
-`;
-
-export const CardContent = styled.div`
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const CardDescription = styled.p`
-  font-size: 1.25rem;
-  margin: 0;
-  ${TwoLinesText};
-  text-overflow: ellipsis;
-  color: hsla(0, 0%, 100%, 1);
-`;
-
 export const CardContentFlexArea = styled.div<WithViewType>`
   display: flex;
   align-items: center;
+  padding-top: 7px;
   flex-direction: column;
   ${(props) =>
     props.viewType === "list" &&
@@ -178,5 +223,18 @@ export const CardImage = styled.img<WithViewType>`
     height: 100%;
     object-fit: cover;
     object-position: left;
+  }
+`;
+
+export const ActionVotesContainer = styled.div<IActionVotesContainer>`
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+
+  @media (max-width: ${PHONE_MAX}) {
+    margin-top: 12px;
+  }
+  @media (min-width: ${TABLET_MIN}) {
+    margin-top: ${(props) => (props.viewType === "grid" ? "12px" : "0px")};
   }
 `;

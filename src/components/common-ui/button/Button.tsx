@@ -17,7 +17,6 @@ export const Button = styled.button<ICustomButtonProps>`
 
   &:active {
     background: rgba(0, 0, 0, 0.8);
-    // scale up a little
     transform: scale(1.02);
   }
 

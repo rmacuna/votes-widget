@@ -25,10 +25,6 @@ export class FirebaseService {
     const celebCollection = collection(this.db, "celebrities");
     const celebSnapshot = await getDocs(celebCollection);
     const celebrityList = celebSnapshot.docs.map((doc) => doc.data());
-    console.log(
-      "🚀 ~ file: firebaseService.ts ~ line 50 ~ FirebaseService ~ getCelebrities ~ celebrityList",
-      celebrityList
-    );
     return celebrityList;
   }
 

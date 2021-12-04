@@ -1,4 +1,3 @@
-// Create a function that returns the last modified from now to the date
 const getLastModified = (date: string) => {
   const now = new Date();
   const diff = now.getTime() - new Date(date).getTime();
@@ -6,7 +5,6 @@ const getLastModified = (date: string) => {
   return lastModified;
 };
 
-// Transform last modified into a readable string for example 1 month ago, 2 days ago etc
 export const getLastModifiedString = (date: string) => {
   const lastModified = getLastModified(date);
   const seconds = Math.floor(
@@ -44,7 +42,6 @@ export const calculatePercentageOfVotes = (
   const thumbsUp = (positiveVotes / total) * 100;
   const thumbsDown = (negativeVotes / total) * 100;
 
-  // Get just the first decimal place
   const thumbsUpPercentage = Math.round(thumbsUp * 10) / 10;
   const thumbsDownPercentage = Math.round(thumbsDown * 10) / 10;
 

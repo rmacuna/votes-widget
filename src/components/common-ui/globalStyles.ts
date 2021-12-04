@@ -22,4 +22,10 @@ export const GlobalStyles = createGlobalStyle`
   .items-center {
     align-items: center;
   }
+  .justify-start {
+    justify-content: flex-start;
+  }
+  .flex-end {
+    justify-content: flex-end;
+  }
 `;

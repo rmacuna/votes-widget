@@ -1,4 +1,3 @@
-import * as React from "react";
 import {
   CardBackdrop,
   CardContent,
@@ -7,13 +6,14 @@ import {
   CardImage,
   CardTitle,
   CarouselCardContainer,
+  ActionVotesContainer,
   UpdateTimestamp,
+  CardHeader,
 } from "./CarouselCard.styles";
 import { GaugeBar } from "./gauge-bar/GaugeBar";
 import { ellipsisName } from "./helpers";
-import { ThumbButton } from "../thumb-button/ThumbButton";
+import { ThumbButton, ThumbIcon } from "../common-ui/ThumbButton";
 import { ICelebrity } from "../../types";
-import { ActionVotesContainer } from "../thumb-button/ThumbButton.styles";
 import { Button } from "../common-ui/button/Button";
 import {
   calculatePercentageOfVotes,
@@ -45,30 +45,44 @@ export const CarouselCard = ({ viewType, celebrity }: CarouselCardProps) => {
 
   return (
     <CarouselCardContainer viewType={viewType}>
-      <ThumbButton viewType={viewType} absolute buttonType={averageVotes} />
       <CardBackdrop viewType={viewType} />
       <CardImage viewType={viewType} src={picture} />
-      <CardTitle>{ellipsisName(name)}</CardTitle>
+
+      <CardHeader viewType={viewType}>
+        <ThumbButton
+          marginRight="0px"
+          buttonType={averageVotes}
+          viewType={viewType}
+        >
+          <ThumbIcon icon={averageVotes} />
+        </ThumbButton>
+        <CardTitle viewType={viewType}>{ellipsisName(name)}</CardTitle>
+      </CardHeader>
+
       <CardContent>
         <CardContentFlexArea viewType={viewType}>
-          <CardDescription>
+          <CardDescription viewType={viewType}>
             {isVoted ? `Thank you for voting!` : description}
           </CardDescription>
           <ActionVotesContainer viewType={viewType}>
             {!isVoted && (
               <>
                 <ThumbButton
-                  onClick={upVote}
-                  isActive={selectedVote === "up"}
-                  viewType={viewType}
                   buttonType="up"
-                />
+                  viewType={viewType}
+                  isActive={selectedVote === "up"}
+                  onClick={upVote}
+                >
+                  <ThumbIcon icon="up" />
+                </ThumbButton>
                 <ThumbButton
+                  buttonType="down"
+                  viewType={viewType}
                   onClick={downVote}
                   isActive={selectedVote === "down"}
-                  viewType={viewType}
-                  buttonType="down"
-                />
+                >
+                  <ThumbIcon icon="down" />
+                </ThumbButton>
               </>
             )}
 
