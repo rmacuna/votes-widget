@@ -17,7 +17,9 @@ export const MainContainer = styled.div`
     max-width: 1100px;
   }
   @media (min-width: ${TABLET_MIN}) and (max-width: ${DESKTOP_MIN}) {
-    max-width: 715px;
+    max-width: 100%;
+    margin-left: 12px;
+    margin-right: 12px;
   }
   @media (max-width: ${PHONE_MAX}) {
     max-width: 100%;
